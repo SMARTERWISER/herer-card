@@ -39,7 +39,7 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
   box-shadow:0 1px 2px rgba(60,10,12,.06),0 18px 40px -18px rgba(120,10,16,.28)}
 
 /* Hero band */
-.band{position:relative;height:176px;overflow:hidden;
+.band{position:relative;height:clamp(92px,14vh,140px);overflow:hidden;
   background:radial-gradient(130% 120% at 50% 112%,var(--crimson-hi) 0%,var(--crimson) 42%,var(--crimson-deep) 100%)}
 .field{position:absolute;inset:0;width:100%;height:100%}
 .field .w{fill:#fff}.field .p{fill:var(--particle)}
@@ -48,31 +48,31 @@ body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
   font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#ffe1e2}
 .band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--navy);opacity:.9}
 
-.head{display:grid;justify-items:center;text-align:center;padding:0 22px 22px;margin-top:-66px;position:relative}
-.disc{width:132px;height:132px;border-radius:50%;background:#fff;display:grid;place-items:center;
+.head{display:grid;justify-items:center;text-align:center;padding:0 22px 14px;margin-top:-54px;position:relative}
+.disc{width:clamp(92px,13vh,124px);height:clamp(92px,13vh,124px);border-radius:50%;background:#fff;display:grid;place-items:center;
   box-shadow:0 0 0 6px var(--card),0 10px 24px -8px rgba(120,10,16,.45)}
-.disc img{width:124px;height:124px;display:block}
-h1{font-family:var(--display);font-weight:600;font-size:1.75rem;line-height:1.15;color:var(--navy);margin:16px 0 0;text-wrap:balance;letter-spacing:-.01em}
+.disc img{width:92%;height:92%;display:block}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.35rem,3.4vh,1.75rem);line-height:1.15;color:var(--navy);margin:10px 0 0;text-wrap:balance;letter-spacing:-.01em}
 .role{margin:6px 0 0;font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--crimson)}
-.clinic{margin:10px 0 0;color:var(--muted);font-size:.95rem}
+.clinic{margin:6px 0 0;color:var(--muted);font-size:.95rem}
 .clinic b{color:var(--ink);font-weight:600}
 
 /* Actions */
-.actions{display:grid;gap:10px;padding:4px 20px 22px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:14px;
+.actions{display:grid;gap:8px;padding:2px 20px 14px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:clamp(44px,6.2vh,54px);border-radius:14px;
   font:600 1rem/1 var(--body);text-decoration:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .btn svg{width:20px;height:20px;flex:none}
 .primary{background:var(--crimson);color:var(--on-accent);box-shadow:0 8px 18px -10px var(--crimson)}
 .wa{background:var(--wa);color:#fff}
 .ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
 .ghost svg{color:var(--icon)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .btn:focus-visible,.copy:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
 
 /* Details */
 .details{margin:0 20px;border-top:1px solid var(--line)}
-.item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
-.ico{width:38px;height:38px;border-radius:50%;background:var(--soft);display:grid;place-items:center;flex:none;color:var(--icon)}
+.item{display:flex;align-items:center;gap:12px;padding:clamp(8px,1.3vh,14px) 0;border-bottom:1px solid var(--line)}
+.ico{width:34px;height:34px;border-radius:50%;background:var(--soft);display:grid;place-items:center;flex:none;color:var(--icon)}
 .ico svg{width:18px;height:18px}
 .item .txt{min-width:0;flex:1}
 .label{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -81,7 +81,9 @@ h1{font-family:var(--display);font-weight:600;font-size:1.75rem;line-height:1.15
 .copy.done{background:var(--navy);border-color:var(--navy);color:var(--card)}
 
 /* Share */
-.share{display:grid;justify-items:center;gap:10px;padding:24px 20px 26px;text-align:center}
+.share{display:grid;justify-items:center;gap:10px;padding:14px 20px 18px;text-align:center}
+#qrbox{display:grid;justify-items:center;gap:10px}
+.qrbtn{background:none;border:0;color:var(--muted);font:500 .85rem/1 var(--body);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px}
 #qr{background:#fff;padding:12px;border-radius:16px;line-height:0;border:1px solid var(--line)}
 #qr img,#qr canvas{width:156px;height:156px}
 .note{font-size:.84rem;color:var(--muted);margin:0}
@@ -91,6 +93,19 @@ footer{text-align:center;font-size:.74rem;letter-spacing:.14em;text-transform:up
   .btn{transition:transform .12s ease,filter .12s}.btn:active{transform:scale(.98)}.btn:hover{filter:brightness(1.05)}
   .field circle{animation:drift 7s ease-in-out infinite alternate;animation-delay:calc(var(--d) * -1)}
   @keyframes drift{to{transform:translateY(-4px)}}
+}
+/* Short screens (small phones, browser bars showing): tighten so everything fits without scrolling */
+@media (max-height:640px){
+  body{padding-block:10px 16px}
+  .band{height:76px}.band .tag{display:none}
+  .head{margin-top:-44px;padding-bottom:10px}
+  .disc{width:84px;height:84px;box-shadow:0 0 0 4px var(--card)}
+  h1{font-size:1.3rem;margin-top:8px}
+  .role{margin-top:4px}.clinic{margin-top:4px;font-size:.88rem}
+  .actions{gap:7px;padding-bottom:10px}
+  .btn{min-height:42px}
+  .item{padding:7px 0}
+  .ico{width:30px;height:30px}
 }
 </style>
 </head>
@@ -148,11 +163,11 @@ footer{text-align:center;font-size:.74rem;letter-spacing:.14em;text-transform:up
   </section>
 
   <section class="share" aria-label="Share this card">
-    <div id="qr" role="img" aria-label="QR code linking to this page"></div>
-    <p class="note">Scan to open this card on another phone</p>
+    <button class="qrbtn" id="qrbtn" aria-expanded="false" aria-controls="qrbox">Show QR code to share</button>
+    <div id="qrbox" hidden><div id="qr" role="img" aria-label="QR code linking to this page"></div>
+    <p class="note">Scan to open this card on another phone</p></div>
   </section>
 </main>
-<footer>Herer Specialty Clinic · Gabiley, Somaliland</footer>
 
 <script>
 const vcf=["BEGIN:VCARD","VERSION:3.0","N:Abdirahman;Yousuf;;Dr.;MD","FN:Dr. Yousuf Abdirahman","ORG:Herer Specialty Clinic","TITLE:Founder, Medical Doctor (MD)","TEL;TYPE=CELL,VOICE:+252634667955","EMAIL;TYPE=INTERNET:Dr.shakiib@gmail.com","ADR;TYPE=WORK:;;;Gabiley;;;Somaliland","URL:"+location.href.split('#')[0],"END:VCARD"].join("\r\n");
@@ -162,7 +177,8 @@ document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
   if(navigator.clipboard){navigator.clipboard.writeText(t).then(done).catch(()=>sel(b))}else sel(b);
 }));
 function sel(b){const v=b.parentElement.querySelector('.val');const r=document.createRange();r.selectNodeContents(v);const s=getSelection();s.removeAllRanges();s.addRange(r)}
-try{new QRCode(document.getElementById('qr'),{text:location.href.split('#')[0],width:320,height:320,colorDark:"#1f2f73",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}catch(e){document.querySelector('.share').hidden=true}
+document.getElementById('qrbtn').addEventListener('click',e=>{const b=document.getElementById('qrbox');b.hidden=!b.hidden;e.currentTarget.setAttribute('aria-expanded',!b.hidden);e.currentTarget.textContent=b.hidden?'Show QR code to share':'Hide QR code'});
+try{new QRCode(document.getElementById('qr'),{text:location.href.split('#')[0],width:320,height:320,colorDark:"#1f2f73",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}catch(e){document.getElementById('qrbtn').hidden=true}
 </script>
 
 </body>
